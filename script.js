@@ -15,9 +15,24 @@ function checkEmail(){
     }
 }
 
+function checkPswd(){
+    const pswd = document.querySelector('#pswd');
+    //Must include upper-case, lower-case, numbers, and be greater than 8
+    const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
+
+    if(regex.test(pswd.value)){
+        console.log("Valid");
+    }
+    else {
+        pswd.setCustomValidity("Password must contain alphanumeric characters");
+        pswd.reportValidity();
+    }
+}
+
 form.addEventListener('submit', (e)=>{
     //Prevent page reload
     e.preventDefault();
     checkEmail();
+    checkPswd();
 })
 
