@@ -16,10 +16,8 @@ function checkEmail(){
 }
 
 function checkIfEmpty(){
-    const email = document.querySelector('#email'); 
     const country = document.querySelector('#country');
     const postal_code = document.querySelector('#pcode');
-    const pswd = document.querySelector('#pswd');
 
     if(country.value === ""){
         country.setCustomValidity("Fill the country field");
@@ -29,7 +27,6 @@ function checkIfEmpty(){
         postal_code.setCustomValidity("Fill the postal code field");
         postal_code.reportValidity();
     }
-
 }
 
 function checkPswd(){
@@ -46,11 +43,22 @@ function checkPswd(){
     }
 }
 
+function checkConfirmPswd(){
+    const pswd = document.querySelector('#pswd');
+    const confirm = document.querySelector('#confirm');
+    
+    if(pswd.value !== confirm.value){
+        confirm.setCustomValidity("Password and Confirm Password must match");
+        confirm.reportValidity();
+    }
+}
+
 form.addEventListener('submit', (e)=>{
     //Prevent page reload
     e.preventDefault();
-    checkIfEmpty();
+    checkConfirmPswd();
     checkPswd();
+    checkIfEmpty();
     checkEmail();
     
 })
