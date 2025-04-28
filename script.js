@@ -15,6 +15,23 @@ function checkEmail(){
     }
 }
 
+function checkIfEmpty(){
+    const email = document.querySelector('#email'); 
+    const country = document.querySelector('#country');
+    const postal_code = document.querySelector('#pcode');
+    const pswd = document.querySelector('#pswd');
+
+    if(country.value === ""){
+        country.setCustomValidity("Fill the country field");
+        country.reportValidity();
+    }
+    else if(postal_code.value === ""){
+        postal_code.setCustomValidity("Fill the postal code field");
+        postal_code.reportValidity();
+    }
+
+}
+
 function checkPswd(){
     const pswd = document.querySelector('#pswd');
     //Must include upper-case, lower-case, numbers, and be greater than 8
@@ -32,7 +49,9 @@ function checkPswd(){
 form.addEventListener('submit', (e)=>{
     //Prevent page reload
     e.preventDefault();
-    checkEmail();
+    checkIfEmpty();
     checkPswd();
+    checkEmail();
+    
 })
 
