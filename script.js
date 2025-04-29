@@ -7,7 +7,7 @@ function checkEmail(){
     
 
     if(emailPattern.test(email.value)){
-        console.log("Valid");
+        email.setCustomValidity("");
     }
     else{
         email.setCustomValidity('Enter a valid email');
@@ -53,13 +53,17 @@ function checkConfirmPswd(){
     }
 }
 
-form.addEventListener('submit', (e)=>{
-    //Prevent page reload
-    e.preventDefault();
-    checkConfirmPswd();
-    checkPswd();
-    checkIfEmpty();
-    checkEmail();
+window.onload = () => {
+    document.querySelector('#email').oninput = checkEmail;
+}
+
+// form.addEventListener('submit', (e)=>{
+//     //Prevent page reload
+//     e.preventDefault();
+//     checkConfirmPswd();
+//     checkPswd();
+//     checkIfEmpty();
+//     checkEmail();
     
-})
+// })
 
