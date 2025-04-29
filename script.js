@@ -15,17 +15,27 @@ function checkEmail(){
     }
 }
 
-function checkIfEmpty(){
+function checkIfCountryEmpty(){
     const country = document.querySelector('#country');
-    const postal_code = document.querySelector('#pcode');
 
     if(country.value === ""){
         country.setCustomValidity("Fill the country field");
         country.reportValidity();
     }
-    else if(postal_code.value === ""){
+    else {
+        country.setCustomValidity('');
+    }
+}
+
+function checkIfPcodeEmpty(){
+    const postal_code = document.querySelector('#pcode');
+
+    if(postal_code.value === ""){
         postal_code.setCustomValidity("Fill the postal code field");
         postal_code.reportValidity();
+    }
+    else {
+        postal_code.setCustomValidity('');
     }
 }
 
@@ -35,7 +45,7 @@ function checkPswd(){
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
 
     if(regex.test(pswd.value)){
-        pswd.setCustomValidity("");
+        pswd.setCustomValidity('');
     }
     else {
         pswd.setCustomValidity("Password must contain alphanumeric characters");
@@ -52,7 +62,7 @@ function checkConfirmPswd(){
         confirm.reportValidity();
     }
     else {
-        confirm.setCustomValidity("");
+        confirm.setCustomValidity('');
     }
 }
 
@@ -60,6 +70,8 @@ window.onload = () => {
     document.querySelector('#email').oninput = checkEmail;
     document.querySelector('#pswd').oninput = checkPswd;
     document.querySelector('#confirm').oninput = checkConfirmPswd;
+    document.querySelector('#country').oninput = checkIfCountryEmpty;
+    document.querySelector('#pcode').oninput = checkIfPcodeEmpty;
 }
 
 // form.addEventListener('submit', (e)=>{
