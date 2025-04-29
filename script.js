@@ -35,7 +35,7 @@ function checkPswd(){
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
 
     if(regex.test(pswd.value)){
-        console.log("Valid");
+        pswd.setCustomValidity("");
     }
     else {
         pswd.setCustomValidity("Password must contain alphanumeric characters");
@@ -51,10 +51,15 @@ function checkConfirmPswd(){
         confirm.setCustomValidity("Password and Confirm Password must match");
         confirm.reportValidity();
     }
+    else {
+        confirm.setCustomValidity("");
+    }
 }
 
 window.onload = () => {
     document.querySelector('#email').oninput = checkEmail;
+    document.querySelector('#pswd').oninput = checkPswd;
+    document.querySelector('#confirm').oninput = checkConfirmPswd;
 }
 
 // form.addEventListener('submit', (e)=>{
