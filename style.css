@@ -10,6 +10,36 @@ form, body {
     gap: 10px;
 }
 
+form {
+    background-color: rgb(80, 80, 80);
+    color: white;
+    padding: 40px;
+    border-radius: 30px;
+}
+
+
+button {
+    border-radius: 30px;
+    height: 40px;
+}
+
+label{
+    text-align: center;
+}
+
 body {
     align-items: center;
+}
+
+input {
+    border-radius: 5px;
+    height: 25px;
+}
+
+#pcode:invalid, #pswd:invalid, #confirm:invalid, #country:invalid, #email:invalid {
+    outline-color: red;
+}
+
+#pcode:valid, #email:valid, #pswd:valid, #confirm:valid, #country:valid {
+    outline-color: rgb(0, 255, 42);
 }

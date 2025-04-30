@@ -45,7 +45,7 @@ function checkPswd(){
     const regex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/;
 
     if(regex.test(pswd.value)){
-        pswd.setCustomValidity('');
+        pswd.setCustomValidity("");
     }
     else {
         pswd.setCustomValidity("Password must contain alphanumeric characters");
